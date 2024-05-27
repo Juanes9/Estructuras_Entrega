@@ -2,7 +2,6 @@
 import javax.swing.JOptionPane;
 public class Estudiante_Ingenieria {
     
-    JOptionPane jp= new JOptionPane();
     private String Cedula;
     private String Nombre;
     private String Apellido;
@@ -28,24 +27,36 @@ public class Estudiante_Ingenieria {
     }
 
     public String getCedula() {
+        
         return Cedula;
     }
 
     public void setCedula(String cedula) {
 
-        if(cedula.matches("^[0-9\\s]*$")){
-            Cedula = cedula; 
-                  
-        }else{
-            JOptionPane.showMessageDialog(null,"La cedula no permite letras ni caracteres especiales");
+       do{
+
+        if(!cedula.matches("^[0-9\\s]*$")){
+        JOptionPane.showMessageDialog(null,"La cedula no permite letras ni caracteres especiales,","Error",JOptionPane.ERROR_MESSAGE);
+        cedula = JOptionPane.showInputDialog(null, "Cedula:");
         }
-}
+        }while(!cedula.matches("^[0-9\\s]*$"));
+
+        Cedula = cedula;
+    }
 
     public String getNombre() {
         return Nombre;
     }
 
     public void setNombre(String nombre) {
+
+        do{
+            
+            if(!nombre.matches("^[a-zA-Z\\s]*$")){
+            JOptionPane.showMessageDialog(null,"El nombre no permite Numeros ni caracteres especiales,","Error",JOptionPane.ERROR_MESSAGE);
+            nombre = JOptionPane.showInputDialog(null, "Nombre:");
+        }
+        }while(!nombre.matches("^[a-zA-Z\\s]*$"));
         Nombre = nombre;
     }
 
@@ -54,6 +65,15 @@ public class Estudiante_Ingenieria {
     }
 
     public void setApellido(String apellido) {
+
+        do{
+            
+            if(!apellido.matches("^[a-zA-Z\\s]*$")){
+            JOptionPane.showMessageDialog(null,"El apellido no permite Numeros ni caracteres especiales,","Error",JOptionPane.ERROR_MESSAGE);
+            apellido = JOptionPane.showInputDialog(null, "Apellido:");
+        }
+        }while(!apellido.matches("^[a-zA-Z\\s]*$"));
+
         Apellido = apellido;
     }
 
@@ -62,6 +82,14 @@ public class Estudiante_Ingenieria {
     }
 
     public void setTelefono(String telefono) {
+
+        do{
+
+            if(!telefono.matches("^[0-9\\s]*$")){
+            JOptionPane.showMessageDialog(null,"El telefono no permite letras ni caracteres especiales,","Error",JOptionPane.ERROR_MESSAGE);
+            telefono = JOptionPane.showInputDialog(null, "Telefono:");
+            }
+            }while(!telefono.matches("^[0-9\\s]*$"));
         Telefono = telefono;
     }
 
@@ -70,6 +98,14 @@ public class Estudiante_Ingenieria {
     }
 
     public void setNum_Semestre_Cursado(int num_Semestre_Cursado) {
+        
+        do{
+
+            if(num_Semestre_Cursado < 0 || num_Semestre_Cursado>11 ){
+            JOptionPane.showMessageDialog(null,"El semestre actual no puede ser menor a 1 o mayor que 10,","Error",JOptionPane.ERROR_MESSAGE);
+            num_Semestre_Cursado = Integer.parseInt(JOptionPane.showInputDialog(null, "Semestra actual:"));
+            }
+            }while(num_Semestre_Cursado < 0 || num_Semestre_Cursado>11);
         Num_Semestre_Cursado = num_Semestre_Cursado;
     }
 
@@ -78,7 +114,18 @@ public class Estudiante_Ingenieria {
     }
 
     public void setPromedio_acumulado(float promedio_acumulado) {
+
+        do{
+
+            if(promedio_acumulado < 0 || promedio_acumulado>6 ){
+            JOptionPane.showMessageDialog(null,"El promedio no es negativo o mayor que 5,","Error",JOptionPane.ERROR_MESSAGE);
+            promedio_acumulado = Float.parseFloat(JOptionPane.showInputDialog(null, "Promedio:"));
+            }
+            }while(promedio_acumulado < 0 || promedio_acumulado>6);
+
         Promedio_acumulado = promedio_acumulado;
+
+
     }
 
     public Computador_Portatil getComputador_Portatil() {
@@ -89,10 +136,4 @@ public class Estudiante_Ingenieria {
         Computador_Portatil = computador_Portatil;
     }
 
-    
-
-
-
 }
-
-

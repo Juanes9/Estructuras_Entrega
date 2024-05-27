@@ -9,13 +9,12 @@ public LinkedList<Computador_Portatil> RegistroComputador(LinkedList<Computador_
     int opcionSO=0;
     int opcionP=0;
         Computador_Portatil CP = new Computador_Portatil(null, null, 0, 0, null, null);
+        JOptionPane.showMessageDialog(null,"Datos del computador");
         CP.setSerial(JOptionPane.showInputDialog("Ingresa el serial del computador"));
         CP.setMarca(JOptionPane.showInputDialog("Ingresa la marca del computador"));
-        CP.setTamano(Integer.parseInt(JOptionPane.showInputDialog("Ingrese el tamaño del computador")));
-        CP.setPrecio(Float.parseFloat(JOptionPane.showInputDialog("Ingresa el valor del computador en dolares")));
-       
+        CP.setTamano(Float.parseFloat(JOptionPane.showInputDialog("Ingrese el tamaño del computador")));
+        CP.setPrecio(Float.parseFloat(JOptionPane.showInputDialog("Ingresa el valor del computador en dolares")));  
         CP.setSistema_Operativo(SistemaOperativo(opcionSO));
-
         CP.setProcesador(Procesador(opcionP));
 
         ListaCP.add(CP);
@@ -46,15 +45,15 @@ public LinkedList<Computador_Portatil> RegistroComputador(LinkedList<Computador_
         }
     }
 
-    public String Procesador(int opcion){
+    public String Procesador(int opcionP){
 
      
 
         String Menu = "MENU\n" + "1.AMD Ryzen. \n" + "2.Intel® Core™ i5.\n"+ "Ingrese la opcion deseada\n";
 
-        opcion = Integer.parseInt(JOptionPane.showInputDialog(Menu));
+        opcionP = Integer.parseInt(JOptionPane.showInputDialog(Menu));
 
-        switch (opcion) {
+        switch (opcionP) {
             case 1:
                return "AMD Ryzen";
               
