@@ -3,6 +3,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.LinkedList;
 
+import javax.swing.JOptionPane;
+
 public class ImportarEstudiantesIngenieria {
 
     public LinkedList<Estudiante_Ingenieria> importarEstudiantesIngenieria(String Archivo,
@@ -18,16 +20,14 @@ public class ImportarEstudiantesIngenieria {
                 String valor = Lineas[1];
                 switch (Atributo) {
                     case "Estudiante":
+                    JOptionPane.showMessageDialog(null,"Datos del computador");
                         String Cedula = valor.trim();
                         String Nombre = importar.readLine().split(":")[1].trim();
                         String Apellido = importar.readLine().split(":")[1].trim();
                         String Telefono = importar.readLine().split(":")[1].trim();
                         int Semestre = Integer.parseInt(importar.readLine().split(":")[1].trim());
                         float Promedio = Float.parseFloat(importar.readLine().split(":")[1].trim());
-
-                        // Leer la línea en blanco entre estudiantes
-                        importar.readLine();
-
+                        JOptionPane.showMessageDialog(null, "Datos del estudiante");
                         String Serial = valor.trim();
                         String Marca = importar.readLine().split(":")[1].trim();
                         float tamano = Float.parseFloat(importar.readLine().split(":")[1].trim());
@@ -42,6 +42,8 @@ public class ImportarEstudiantesIngenieria {
                         EI.setComputador_Portatil(CP);
 
                         lista.add(EI);
+
+                        importar.readLine();
 
                         break;
 

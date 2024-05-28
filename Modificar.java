@@ -12,14 +12,15 @@ public class Modificar {
         String cedulaSerial = JOptionPane.showInputDialog("Ingrese la cédula o serial:");
 
         for (Estudiante_Ingenieria estudiante : ListaGP) {
-            if (estudiante.getCedula().equals(cedulaSerial) || estudiante.getComputador_Portatil().getSerial().equals(cedulaSerial)) {
-              
+            if (estudiante.getCedula().equals(cedulaSerial)
+                    || estudiante.getComputador_Portatil().getSerial().equals(cedulaSerial)) {
+
                 registrar.RegistroComputador(ListaCP);
 
-                nuevoComputador=ListaCP.removeFirst();
+                nuevoComputador = ListaCP.removeFirst();
 
                 estudiante.setComputador_Portatil(nuevoComputador);
-                
+
                 JOptionPane.showMessageDialog(null, "Datos del computador actualizados correctamente.");
                 ListaGP.add(estudiante);
                 break;
@@ -27,6 +28,23 @@ public class Modificar {
         }
 
         return ListaGP;
+    }
+
+    public LinkedList<Estudiante_Ingenieria> Modificarimportacion(LinkedList<Estudiante_Ingenieria> Lista, LinkedList<Computador_Portatil> ListaCP) {
+        Computador_Portatil nuevoComputador = new Computador_Portatil();
+        RegistrarComputadorPortatil registrar = new RegistrarComputadorPortatil();
+        String cedulaSerial = JOptionPane.showInputDialog("Ingrese la cédula o serial:");
+    
+        for (Estudiante_Ingenieria estudiante : Lista) {
+            if (estudiante.getCedula().equals(cedulaSerial) || estudiante.getComputador_Portatil().getSerial().equals(cedulaSerial)) {
+                registrar.RegistroComputador(ListaCP);
+                nuevoComputador = ListaCP.removeFirst();
+                estudiante.setComputador_Portatil(nuevoComputador);
+                JOptionPane.showMessageDialog(null, "Datos del computador actualizados correctamente.");
+            }
+        }
+    
+        return Lista;
     }
 
 }

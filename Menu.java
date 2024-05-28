@@ -8,6 +8,7 @@ public class Menu {
 
         int continuar;
         int opcion;
+        String Archivo="";
 
        
         Registro_EstudiantesIngenieria RE = new Registro_EstudiantesIngenieria();
@@ -15,10 +16,12 @@ public class Menu {
         GestionPrestamo gp = new GestionPrestamo();
         ExportarEstudiantesIngenieria IE = new ExportarEstudiantesIngenieria();
         Modificar MD = new Modificar();
+        ImportarEstudiantesIngenieria IEI= new ImportarEstudiantesIngenieria();
 
         LinkedList<Estudiante_Ingenieria> ListaEI = new LinkedList<>();
         LinkedList<Computador_Portatil> ListaCP = new LinkedList<>();
         LinkedList<Estudiante_Ingenieria> ListaGP = new LinkedList<>();
+        LinkedList<Estudiante_Ingenieria>lista= new LinkedList<>();
 
         do {
 
@@ -26,6 +29,7 @@ public class Menu {
                     + "1.Registro Prestamo\n"
                     + "2.Exportar Archivo\n"
                     + "3.Modificar\n"
+                    +" 4.ModificarArchivoImportado\n"
                     + "Ingrese la opcion Deseada";
 
             opcion = Integer.parseInt(JOptionPane.showInputDialog(menu));
@@ -38,7 +42,9 @@ public class Menu {
                             JOptionPane.YES_NO_OPTION);
                     if (continuar == JOptionPane.YES_OPTION) {
                         do {
+                           
                             RE.Registro_Est_Ingenieria(ListaEI);
+                        
                             RCP.RegistroComputador(ListaCP);
                             
                             continuar = JOptionPane.showConfirmDialog(null, "Desea registrar un nuevo estudiante",
@@ -59,7 +65,15 @@ public class Menu {
                     MD.Modificar(ListaGP, ListaCP);
                     break;
 
-                case 4:
+                    case 4: 
+
+                    Archivo = JOptionPane.showInputDialog("Ingrese el nombre del archivo a importar:");
+                    IEI.importarEstudiantesIngenieria(Archivo, lista);
+                    MD.Modificarimportacion(lista, ListaCP);
+
+                    break;
+
+                case 7:
                    gp.mostrarDetalleEstudiante(ListaGP);
                     break;
 

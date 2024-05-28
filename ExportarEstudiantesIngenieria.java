@@ -9,8 +9,7 @@ public class ExportarEstudiantesIngenieria {
     @SuppressWarnings("static-access")
     
     public void exportarEstudiantesIngenieria(LinkedList<Estudiante_Ingenieria> Gestor_Prestamo) {
-
-        
+   
         LinkedList<Estudiante_Ingenieria>Exportar= Gestor_Prestamo;
         JOptionPane jo = new JOptionPane();
         try {

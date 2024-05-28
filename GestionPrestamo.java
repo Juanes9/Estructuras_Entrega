@@ -6,20 +6,26 @@ import javax.swing.JOptionPane;
 public class GestionPrestamo {
 
     public LinkedList<Estudiante_Ingenieria> Prestamo(LinkedList<Estudiante_Ingenieria> ListaEI,
-            LinkedList<Computador_Portatil> ListaCP,LinkedList<Estudiante_Ingenieria> Gestor_Prestamo) {
-       
-        for (Estudiante_Ingenieria estudiante : ListaEI) {
+            LinkedList<Computador_Portatil> ListaCP, LinkedList<Estudiante_Ingenieria> Gestor_Prestamo) {
+
+
+        LinkedList<Estudiante_Ingenieria> Listem = ListaEI;
+    
+        for (Estudiante_Ingenieria estudiante : Listem) {
 
             Computador_Portatil CP = ListaCP.removeFirst();
             estudiante.setComputador_Portatil(CP);
             Gestor_Prestamo.add(estudiante);
 
         }
+    
         return Gestor_Prestamo;
     }
 
-    public void mostrarDetalleEstudiante(LinkedList<Estudiante_Ingenieria> Gestor_Prestamo) {
+    public LinkedList<Estudiante_Ingenieria> mostrarDetalleEstudiante(
+            LinkedList<Estudiante_Ingenieria> Gestor_Prestamo) {
 
+        LinkedList<Estudiante_Ingenieria> MostrarLista = new LinkedList<>();
         StringBuilder detalle = new StringBuilder();
 
         for (Estudiante_Ingenieria estudiante : Gestor_Prestamo) {
@@ -38,8 +44,12 @@ public class GestionPrestamo {
             detalle.append("Sistema Operativo: ").append(estudiante.getComputador_Portatil().getSistema_Operativo())
                     .append("\n");
             detalle.append("Procesador: ").append(estudiante.getComputador_Portatil().getProcesador()).append("\n");
+
+            MostrarLista.add(estudiante);
             JOptionPane.showMessageDialog(null, detalle.toString(), "Detalle del estudiante",
                     JOptionPane.INFORMATION_MESSAGE);
         }
+
+        return MostrarLista;
     }
 }
