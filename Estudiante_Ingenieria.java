@@ -98,16 +98,9 @@ public class Estudiante_Ingenieria {
     }
 
     public void setNum_Semestre_Cursado(int num_Semestre_Cursado) {
-        
-        do{
 
-            if(num_Semestre_Cursado < 0 || num_Semestre_Cursado>11 ){
-            JOptionPane.showMessageDialog(null,"El semestre actual no puede ser menor a 1 o mayor que 10,","Error",JOptionPane.ERROR_MESSAGE);
-            num_Semestre_Cursado = Integer.parseInt(JOptionPane.showInputDialog(null, "Semestra actual:"));
-            }
-            }while(num_Semestre_Cursado < 0 || num_Semestre_Cursado>11);
-        Num_Semestre_Cursado = num_Semestre_Cursado;
-    }
+            Num_Semestre_Cursado = num_Semestre_Cursado;
+        }
 
     public float getPromedio_acumulado() {
         return Promedio_acumulado;

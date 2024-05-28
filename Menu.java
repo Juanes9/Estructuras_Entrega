@@ -16,6 +16,7 @@ public class Menu {
         GestionPrestamo gp = new GestionPrestamo();
         ExportarEstudiantesIngenieria IE = new ExportarEstudiantesIngenieria();
         Modificar MD = new Modificar();
+        EliminarRegistroIngenieria ERI= new EliminarRegistroIngenieria();
         ImportarEstudiantesIngenieria IEI= new ImportarEstudiantesIngenieria();
 
         LinkedList<Estudiante_Ingenieria> ListaEI = new LinkedList<>();
@@ -54,22 +55,23 @@ public class Menu {
                         JOptionPane.showMessageDialog(null, "Volviendo al menu principal");
                     }
 
+                    break;
+
+                    case 2:
                     gp.Prestamo(ListaEI, ListaCP,ListaGP);
                     break;
 
-                case 2:
+                case 3:
                     IE.exportarEstudiantesIngenieria(ListaGP);
                     break;
 
-                case 3:
+                case 4:
                     MD.Modificar(ListaGP, ListaCP);
                     break;
 
-                    case 4: 
+                    case 5:
 
-                    Archivo = JOptionPane.showInputDialog("Ingrese el nombre del archivo a importar:");
-                    IEI.importarEstudiantesIngenieria(Archivo, lista);
-                    MD.Modificarimportacion(lista, ListaCP);
+                    ERI.eliminarRegistro(ListaEI, ListaCP, ListaGP);
 
                     break;
 
