@@ -1,7 +1,7 @@
 import javax.swing.JOptionPane;
 
 public class Computador_Portatil {
-    
+
     private String Serial;
     private String Marca;
     private float Tamano;
@@ -28,13 +28,13 @@ public class Computador_Portatil {
 
     public void setSerial(String serial) {
 
-         do{
-            
-            if(!serial.matches("^[0-9a-zA-Z\\s]*$")){
-            JOptionPane.showMessageDialog(null,"El serial no permite caracteres especiales,","Error",JOptionPane.ERROR_MESSAGE);
-            serial = JOptionPane.showInputDialog(null, "Serial:");
-        }
-        }while(!serial.matches("^[0-9a-zA-Z\\s]*$"));
+        do {
+
+            if (!serial.matches("^[0-9a-zA-Z\\s]*$")) {
+                JOptionPane.showMessageDialog(null, "El serial no permite caracteres especiales,", "Error", JOptionPane.ERROR_MESSAGE);
+                serial = JOptionPane.showInputDialog(null, "Serial:");
+            }
+        } while (!serial.matches("^[0-9a-zA-Z\\s]*$"));
         Serial = serial;
     }
 
@@ -44,13 +44,13 @@ public class Computador_Portatil {
 
     public void setMarca(String marca) {
 
-        do{
-            
-            if(!marca.matches("^[a-zA-Z\\s]*$")){
-            JOptionPane.showMessageDialog(null,"La marca no permite Numeros ni caracteres especiales,","Error",JOptionPane.ERROR_MESSAGE);
-            marca = JOptionPane.showInputDialog(null, "Marca:");
-        }
-        }while(!marca.matches("^[a-zA-Z\\s]*$"));
+        do {
+
+            if (!marca.matches("^[a-zA-Z\\s]*$")) {
+                JOptionPane.showMessageDialog(null, "La marca no permite Numeros ni caracteres especiales,", "Error", JOptionPane.ERROR_MESSAGE);
+                marca = JOptionPane.showInputDialog(null, "Marca:");
+            }
+        } while (!marca.matches("^[a-zA-Z\\s]*$"));
         Marca = marca;
     }
 
@@ -86,9 +86,4 @@ public class Computador_Portatil {
         Procesador = procesador;
     }
 
-    
-    
 }
-
-
-

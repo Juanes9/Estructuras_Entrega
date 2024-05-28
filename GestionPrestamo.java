@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 
 public class GestionPrestamo {
 
-    public LinkedList<Estudiante_Ingenieria> Prestamo(LinkedList<Estudiante_Ingenieria> ListaEI,
+    public LinkedList<Estudiante_Ingenieria> prestamoIngenieria(LinkedList<Estudiante_Ingenieria> ListaEI,
             LinkedList<Computador_Portatil> ListaCP, LinkedList<Estudiante_Ingenieria> Gestor_Prestamo) {
 
 
@@ -22,14 +22,13 @@ public class GestionPrestamo {
         return Gestor_Prestamo;
     }
 
-    public LinkedList<Estudiante_Ingenieria> mostrarDetalleEstudiante(
-            LinkedList<Estudiante_Ingenieria> Gestor_Prestamo) {
+    public void mostrarEstudianteIng(LinkedList<Estudiante_Ingenieria> Gestor_Prestamo) {
 
-        LinkedList<Estudiante_Ingenieria> MostrarLista = new LinkedList<>();
+
         StringBuilder detalle = new StringBuilder();
 
         for (Estudiante_Ingenieria estudiante : Gestor_Prestamo) {
-            detalle.append("Detalle del estudiante modificado:\n");
+            detalle.append("Estudiante Ingenieria:\n");
             detalle.append("Cedula: ").append(estudiante.getCedula()).append("\n");
             detalle.append("Nombre: ").append(estudiante.getNombre()).append("\n");
             detalle.append("Apellido: ").append(estudiante.getApellido()).append("\n");
@@ -41,15 +40,49 @@ public class GestionPrestamo {
             detalle.append("Marca: ").append(estudiante.getComputador_Portatil().getMarca()).append("\n");
             detalle.append("Tamaño: ").append(estudiante.getComputador_Portatil().getTamano()).append("\n");
             detalle.append("Precio: ").append(estudiante.getComputador_Portatil().getPrecio()).append("\n");
-            detalle.append("Sistema Operativo: ").append(estudiante.getComputador_Portatil().getSistema_Operativo())
-                    .append("\n");
+            detalle.append("Sistema Operativo: ").append(estudiante.getComputador_Portatil().getSistema_Operativo()).append("\n");
             detalle.append("Procesador: ").append(estudiante.getComputador_Portatil().getProcesador()).append("\n");
-
-            MostrarLista.add(estudiante);
-            JOptionPane.showMessageDialog(null, detalle.toString(), "Detalle del estudiante",
-                    JOptionPane.INFORMATION_MESSAGE);
+            detalle.append("\n");
         }
+        JOptionPane.showMessageDialog(null, detalle.toString(), "Estudiante Ingeniera",
+                    JOptionPane.INFORMATION_MESSAGE);
+    }
 
-        return MostrarLista;
+    public LinkedList<Estudiante_Diseño> prestamoDiseño(LinkedList<Estudiante_Diseño> ListaED,
+            LinkedList<Tableta_Grafica> ListaTG,
+            LinkedList<Estudiante_Diseño> Gestor_PrestamoD){
+            
+            LinkedList<Estudiante_Diseño> ListaTemp = ListaED;
+
+            for (Estudiante_Diseño estudiante : ListaTemp) {
+                Tableta_Grafica TabletaG = ListaTG.removeFirst();
+                estudiante.setTableta_Grafica(TabletaG);
+                Gestor_PrestamoD.add(estudiante);
+            }
+            return Gestor_PrestamoD;
+    }
+
+    public void mostrarEstudianteDis(LinkedList<Estudiante_Diseño> Gestor_PrestamoD){
+        StringBuilder detalle = new StringBuilder();
+
+        for (Estudiante_Diseño estudiante : Gestor_PrestamoD) {
+            detalle.append("Estudiante Diseño:\n");
+            detalle.append("Cedula: ").append(estudiante.getCedula()).append("\n");
+            detalle.append("Nombre: ").append(estudiante.getNombre()).append("\n");
+            detalle.append("Apellido: ").append(estudiante.getApellido()).append("\n");
+            detalle.append("Telefono: ").append(estudiante.getTelefono()).append("\n");
+            detalle.append("Modalidad de estudio: ").append(estudiante.getModalidad_Estudio()).append("\n");
+            detalle.append("Cantidad de asignaturas: ").append(estudiante.getCantidad_Asignaturas()).append("\n");
+            detalle.append("Detalle de la tableta grafica:\n");
+            detalle.append("Serial: ").append(estudiante.getTableta_Grafica().getSerial()).append("\n");
+            detalle.append("Marca: ").append(estudiante.getTableta_Grafica().getMarca()).append("\n");
+            detalle.append("Tamaño: ").append(estudiante.getTableta_Grafica().getTamano()).append("\n");
+            detalle.append("Precio: ").append(estudiante.getTableta_Grafica().getPrecio()).append("\n");
+            detalle.append("Almacenamiento: ").append(estudiante.getTableta_Grafica().getAlmacenamiento()).append("\n");
+            detalle.append("Peso: ").append(estudiante.getTableta_Grafica().getPeso()).append("\n");
+            detalle.append("\n");
+        }
+        JOptionPane.showMessageDialog(null, detalle.toString(), "Estudiante Diseño",
+                    JOptionPane.INFORMATION_MESSAGE);
     }
 }

@@ -9,35 +9,24 @@ public class Registro_EstudiantesIngenieria {
 
         int semestre=0;
         float promedio=0;
-        boolean duplicada = false;
 
         Estudiante_Ingenieria EI = new Estudiante_Ingenieria(null, null, null, null, 0, 0);
 
         JOptionPane.showMessageDialog(null, "Datos del estudiante");
-        EI.setCedula(JOptionPane.showInputDialog("Cedula"));
-
-        for (Estudiante_Ingenieria estudiante : ListaEI) {
-            if (estudiante.getCedula().equals(EI.getCedula())) {
-                JOptionPane.showMessageDialog(null, "Ya existe un estudiante con este documento");
-                duplicada = true;
-                break;
-            }
-        }
-
-        if (!duplicada) {
+            EI.setCedula(JOptionPane.showInputDialog("Cedula"));
             EI.setNombre(JOptionPane.showInputDialog("Nombre"));
             EI.setApellido(JOptionPane.showInputDialog("Apellido"));
             EI.setTelefono(JOptionPane.showInputDialog("Telefono"));
             EI.setNum_Semestre_Cursado(SemestreActual(semestre));
-            EI.setPromedio_acumulado(promedio(promedio));
+            EI.setPromedio_acumulado(promedioI(promedio));
 
             ListaEI.add(EI);
-        }
+        
         return ListaEI;
     }
 
     public int SemestreActual(int semenActual) {
-        int actual=0;;
+        int actual=0;
        
         do {
             String semestre = JOptionPane.showInputDialog("Semestre actual");
@@ -59,13 +48,13 @@ public class Registro_EstudiantesIngenieria {
         return semenActual;
     }
 
-    public float promedio(float promedio) {
+    public float promedioI(float promedio) {
         float actual=0;
        
         do {
             String prom_acumulado = JOptionPane.showInputDialog("Promedio acumulado");
             try {
-                 actual = Integer.parseInt(prom_acumulado);
+                 actual = Float.parseFloat(prom_acumulado);
                 if (actual <=-1 || actual >=6) {
                     JOptionPane.showMessageDialog(null, "El promedio debe ser un numero mayor a ", "Error",
                             JOptionPane.ERROR_MESSAGE);
