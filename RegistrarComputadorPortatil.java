@@ -6,14 +6,14 @@ public class RegistrarComputadorPortatil {
 
 public LinkedList<Computador_Portatil> RegistroComputador(LinkedList<Computador_Portatil> ListaCP) {
 
-    int opcionSO=0;
-    int opcionP=0;
+    int opcionSO=0,opcionP=0;
+    float tamaño=0,precio=0;
         Computador_Portatil CP = new Computador_Portatil(null, null, 0, 0, null, null);
         JOptionPane.showMessageDialog(null,"Datos del computador");
         CP.setSerial(JOptionPane.showInputDialog("Ingresa el serial del computador"));
         CP.setMarca(JOptionPane.showInputDialog("Ingresa la marca del computador"));
-        CP.setTamano(Float.parseFloat(JOptionPane.showInputDialog("Ingrese el tamaño del computador")));
-        CP.setPrecio(Float.parseFloat(JOptionPane.showInputDialog("Ingresa el valor del computador en dolares")));  
+        CP.setTamano(tamaño(tamaño));
+        CP.setPrecio(precio(precio));  
         CP.setSistema_Operativo(SistemaOperativo(opcionSO));
         CP.setProcesador(Procesador(opcionP));
 
@@ -47,8 +47,6 @@ public LinkedList<Computador_Portatil> RegistroComputador(LinkedList<Computador_
 
     public String Procesador(int opcionP){
 
-     
-
         String Menu = "MENU\n" + "1.AMD Ryzen. \n" + "2.Intel® Core™ i5.\n"+ "Ingrese la opcion deseada\n";
 
         opcionP = Integer.parseInt(JOptionPane.showInputDialog(Menu));
@@ -64,5 +62,58 @@ public LinkedList<Computador_Portatil> RegistroComputador(LinkedList<Computador_
                 JOptionPane.showMessageDialog(null, "Opcion Invalidad. Se le asignara AMD Ryzen por defecto");
                 return "AMD Ryzen";
         }
+
+    }
+
+        public float tamaño(float tamano) {
+            float actual=0;
+           
+            do {
+                String tam_pulgadas = JOptionPane.showInputDialog("Tamaño en pulgadas");
+                try {
+
+                     actual = Integer.parseInt(tam_pulgadas);
+
+                     if(actual<1){
+                        JOptionPane.showMessageDialog(null, "El tamaño debe ser mayor que cero", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                     }else{
+                        tamano=actual;
+                     }
+                    
+                                       
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "No se permiten letras ni caracteres especiales", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            } while (actual<1);
+
+            return tamano;
+        }
+
+        public float precio(float precio) {
+            float actual=0;
+           
+            do {
+                String dolares = JOptionPane.showInputDialog("Precio en dolares");
+                try {
+
+                     actual = Float.parseFloat(dolares);
+
+                     if(actual<1){
+                        JOptionPane.showMessageDialog(null, "El precio debe ser mayor que cero", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                     }else{
+                        precio=actual;
+                     }
+                                                       
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "No se permiten letras ni caracteres especiales", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+            } while (actual<1);
+
+            return precio;
+        }
     }    
-}
+
